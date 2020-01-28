@@ -36,7 +36,7 @@ class CreateProject extends Component {
         <h3>Create New Project</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <label>Projectname: </label>
+            <label>Project: </label>
             <input
               type="text"
               required
