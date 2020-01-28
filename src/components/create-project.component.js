@@ -1,54 +1,54 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-class CreateUser extends Component {
+class CreateProject extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: ""
+      projectname: ""
     };
   }
-  onChangeUsername = e => {
+  onChangeProjectname = e => {
     this.setState({
-      username: e.target.value
+      projectname: e.target.value
     });
   };
 
   onSubmit = e => {
     e.preventDefault();
-    const user = {
-      username: this.state.username
+    const project = {
+      projectname: this.state.projectname
     };
 
-    console.log(user);
+    console.log(project);
 
     axios
-      .post("http://localhost:5000/users/add", user)
+      .post("http://localhost:5000/projects/add", project)
       .then(res => console.log(res.data));
     this.setState({
-      username: ""
+      projectname: ""
     });
   };
 
   render() {
     return (
       <div>
-        <h3>Create New User</h3>
+        <h3>Create New Project</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <label>Username: </label>
+            <label>Projectname: </label>
             <input
               type="text"
               required
               className="form-control"
-              value={this.state.username}
-              onChange={this.onChangeUsername}
+              value={this.state.projectname}
+              onChange={this.onChangeProjectname}
             />
           </div>
           <div className="form-group">
             <input
               type="submit"
-              value="Create User"
+              value="Create Project"
               className="btn btn-primary"
             />
           </div>
@@ -58,4 +58,4 @@ class CreateUser extends Component {
   }
 }
 
-export default CreateUser;
+export default CreateProject;

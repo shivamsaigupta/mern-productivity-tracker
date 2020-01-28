@@ -6,23 +6,23 @@ class Navbar extends Component {
     return (
       <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
         <Link to="/" className="navbar-brand">
-          Fitness App
+          Productivity Tracker
         </Link>
         <div className="collpase navbar-collapse">
           <ul className="navbar-nav mr-auto">
             <li className="navbar-item">
               <Link to="/" className="nav-link">
-                Exercises
+                Home
               </Link>
             </li>
             <li className="navbar-item">
               <Link to="/create" className="nav-link">
-                Create Exercise Log
+                Create Log
               </Link>
             </li>
             <li className="navbar-item">
-              <Link to="/user" className="nav-link">
-                Create User Log
+              <Link to="/project" className="nav-link">
+                New Project
               </Link>
             </li>
           </ul>

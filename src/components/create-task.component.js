@@ -3,32 +3,32 @@ import DatePicker from "react-datepicker";
 import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
 
-class CreateExercise extends Component {
+class CreateTask extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
+      projectname: "",
       description: "",
       duration: 0,
       date: new Date(),
-      users: []
+      projects: []
     };
   }
 
   componentDidMount() {
-    axios.get("http://localhost:5000/users").then(res => {
+    axios.get("http://localhost:5000/projects").then(res => {
       if (res.data.length > 0) {
         this.setState({
-          users: res.data.map(user => user.username),
-          username: res.data[0].username
+          projects: res.data.map(project => project.projectname),
+          projectname: res.data[0].projectname
         });
       }
     });
   }
 
-  onChangeUsername = e => {
+  onChangeProjectname = e => {
     this.setState({
-      username: e.target.value
+      projectname: e.target.value
     });
   };
 
@@ -52,17 +52,17 @@ class CreateExercise extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    const exercise = {
-      username: this.state.username,
+    const task = {
+      projectname: this.state.projectname,
       description: this.state.description,
       duration: this.state.duration,
       date: this.state.date
     };
 
-    console.log(exercise);
+    console.log(task);
 
     axios
-      .post("http://localhost:5000/exercises/add", exercise)
+      .post("http://localhost:5000/tasks/add", task)
       .then(res => console.log(res.data));
 
     window.location = "/";
@@ -71,21 +71,21 @@ class CreateExercise extends Component {
   render() {
     return (
       <div>
-        <h3>Create New Exercise Log</h3>
+        <h3>Create New Log</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <label>Username: </label>
+            <label>Project: </label>
             <select
-              ref="userInput"
+              ref="projectInput"
               required
               className="form-control"
-              value={this.state.username}
-              onChange={this.onChangeUsername}
+              value={this.state.projectname}
+              onChange={this.onChangeProjectname}
             >
-              {this.state.users.map(user => {
+              {this.state.projects.map(project => {
                 return (
-                  <option key={user} value={user}>
-                    {user}
+                  <option key={project} value={project}>
+                    {project}
                   </option>
                 );
               })}
@@ -122,7 +122,7 @@ class CreateExercise extends Component {
           <div className="form-group">
             <input
               type="submit"
-              value="Create Exercise Log"
+              value="Create Log"
               className="btn btn-primary"
             />
           </div>
@@ -132,4 +132,4 @@ class CreateExercise extends Component {
   }
 }
 
-export default CreateExercise;
+export default CreateTask;

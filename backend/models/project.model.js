@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema(
+const projectSchema = new Schema(
   {
-    username: {
+    projectname: {
       type: String,
       required: true,
       unique: true,
@@ -17,6 +17,6 @@ const userSchema = new Schema(
   }
 );
 
-const User = mongoose.model("User", userSchema);
+const Project = mongoose.model("Project", projectSchema);
 
-module.exports = User;
+module.exports = Project;
