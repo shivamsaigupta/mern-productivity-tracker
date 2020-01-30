@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 class Navbar extends Component {
   render() {
     return (
-      <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+      <nav className="navbar navbar-dark navbar-expand-lg order-1">
         <Link to="/" className="navbar-brand">
           Productivity Tracker
         </Link>
-        <div className="collpase navbar-collapse">
-          <ul className="navbar-nav mr-auto">
+        <div className="collpase navbar-collapse order-2">
+          <ul className="navbar-nav ml-auto">
             <li className="navbar-item">
               <Link to="/" className="nav-link">
                 Home

@@ -6,7 +6,7 @@ import {
   faPlayCircle,
   faPauseCircle,
   faChevronCircleRight,
-  faCheck
+  faCheckCircle
 } from "@fortawesome/free-solid-svg-icons";
 import "../style.css";
 import axios from "axios";
@@ -154,8 +154,8 @@ class TimerBar extends Component {
             {this.state.duration > 0 ? (
               <FontAwesomeIcon
                 className="checkButton"
+                icon={faCheckCircle}
                 style={{ flex: 1 }}
-                icon={faCheck}
                 onClick={this.onSubmit}
                 size="2x"
               />

@@ -10,13 +10,15 @@ import CreateProject from "./components/create-project.component";
 function App() {
   return (
     <Router>
-      <div className="container">
+      <div className="container container-top">
         <Navbar />
         <br />
-        <Route path="/" exact component={TasksList} />
-        <Route path="/edit/:id" component={EditTask} />
-        <Route path="/create" component={CreateTask} />
-        <Route path="/project" component={CreateProject} />
+        <div className="container">
+          <Route path="/" exact component={TasksList} />
+          <Route path="/edit/:id" component={EditTask} />
+          <Route path="/create" component={CreateTask} />
+          <Route path="/project" component={CreateProject} />
+        </div>
       </div>
     </Router>
   );

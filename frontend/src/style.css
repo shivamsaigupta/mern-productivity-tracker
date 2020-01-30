@@ -1,3 +1,26 @@
+body {
+  background: #a770ef; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #fdb99b,
+    #cf8bf3,
+    #a770ef
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #fdb99b,
+    #cf8bf3,
+    #a770ef
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.container-top {
+  background-color: white;
+  min-height: 750px;
+  opacity: 0.95;
+  padding: 0;
+}
+
 .dropdownAbs {
   position: absolute;
   top: 100%;
@@ -29,6 +52,9 @@
   opacity: 0.8;
   margin: 2px;
   cursor: pointer;
+  color: #a770ef;
+  color: -webkit-linear-gradient(to right, #fdb99b, #cf8bf3, #a770ef);
+  color: linear-gradient(to right, #fdb99b, #cf8bf3, #a770ef);
 }
 
 .btn-timer-ctrl:hover {
@@ -37,8 +63,37 @@
 
 .checkButton {
   opacity: 0.8;
+  cursor: pointer;
+  color: #a770ef;
+  color: -webkit-linear-gradient(to right, #fdb99b, #cf8bf3, #a770ef);
+  color: linear-gradient(to right, #fdb99b, #cf8bf3, #a770ef);
 }
 
 .checkButton:hover {
   opacity: 1;
+}
+
+.navbar {
+  background: #754ea7; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #a17663,
+    #7b5291,
+    #6f4aa0
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #a17663, #7b5291, #6f4aa0);
+  -webkit-box-shadow: 0px 1px 2px -1px rgba(51, 51, 51, 1);
+  -moz-box-shadow: 0px 1px 2px -1px rgba(51, 51, 51, 1);
+  box-shadow: 0px 1px 2px -1px rgba(51, 51, 51, 1);
+}
+
+.nav-link {
+  color: white !important;
+  opacity: 0.9;
+  transition: color 0.5s;
+}
+
+.nav-link:hover {
+  opacity: 1;
+  color: #fdb99b !important;
 }
