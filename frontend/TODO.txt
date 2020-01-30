@@ -1,0 +1,10 @@
+
+Known Bugs:
+
+1. Delete function throws an error
+2. Write unit tests
+
+
+TODO:
+
+1. Test on mobile devices

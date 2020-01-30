@@ -58,7 +58,6 @@ class TasksList extends Component {
     return (
       <div>
         <TimerBar rerenderCallback={this.rerenderCallback.bind(this)} />
-        <h3>Logged Tasks</h3>
         <table className="table">
           <thead className="thead-light">
             <tr>

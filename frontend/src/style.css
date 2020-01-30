@@ -15,9 +15,8 @@ body {
 }
 
 .container-top {
-  background-color: white;
+  background-color: #ffffffe1;
   min-height: 750px;
-  opacity: 0.95;
   padding: 0;
 }
 
@@ -91,9 +90,29 @@ body {
   color: white !important;
   opacity: 0.9;
   transition: color 0.5s;
+  font-size: 1.2rem;
 }
 
 .nav-link:hover {
   opacity: 1;
   color: #fdb99b !important;
+}
+
+h3 {
+  font-size: 1.2rem;
+  opacity: 0.75;
+  margin-bottom: 1.2rem;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+}
+
+.container-ot {
+  margin-top: 10px;
+}
+
+.container-sc {
+  max-width: 650px;
+  margin: auto;
 }
