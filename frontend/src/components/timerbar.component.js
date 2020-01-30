@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import ms from "pretty-ms";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBriefcase,
@@ -18,7 +19,9 @@ class TimerBar extends Component {
       projects: [],
       projectname: "",
       description: "",
-      duration: "",
+      duration: 0,
+      timerOn: false,
+      startTimeStamp: 0,
       date: new Date(),
       dropdownOpen: false
     };
@@ -40,63 +43,71 @@ class TimerBar extends Component {
     document.removeEventListener("mousedown", this.handleClickOutside);
   }
 
-  handleDropdownButton = () => {
+  startTimer = () => {
     this.setState({
-      dropdownOpen: !this.state.dropdownOpen
+      timerOn: true,
+      startTimeStamp: Date.now() - this.state.duration
     });
-    console.log(this.state.dropdownOpen);
+    this.timer = setInterval(
+      () =>
+        this.setState({
+          duration: Date.now() - this.state.startTimeStamp
+        }),
+      1
+    );
   };
 
-  handleClickOutside = event => {
-    if (
-      this.container.current &&
-      !this.container.current.contains(event.target)
-    ) {
-      this.setState({
-        open: false
-      });
-    }
-  };
+  stopTimer() {
+    this.setState({ timerOn: false });
+    clearInterval(this.timer);
+  }
+
+  resetTimer() {
+    this.setState({ timerOn: false, duration: 0 });
+  }
 
   render() {
     return (
-      <form className="container" ref={this.container}>
-        <div className="row align-items-center">
-          <div className="form-group col-9">
+      <form>
+        <div className="row no-gutters align-content-center">
+          <div className="form-group col-8">
             <input
               type="text"
               placeholder="What are you working on?"
               className="form-control"
             />
           </div>
-          <div className="col-3 d-flex">
-            <div className="position-relative d-inline-block">
-              <button
-                type="button"
-                className="btn"
-                onClick={this.handleDropdownButton}
-              >
-                <FontAwesomeIcon icon={faBriefcase} size="2x" />
-              </button>
-            </div>
-
-            {this.state.dropdownOpen && (
-              <div className="dropdownAbs">
-                <ul className="dropdownUl">
-                  <li className="dropdownLi">Test 1</li>
-                  <li className="dropdownLi">Test 2</li>
-                  <li className="dropdownLi">Test 3</li>
-                </ul>
-              </div>
-            )}
+          <div className="col-4 d-flex justify-content-around">
+            <select
+              ref="projectInput"
+              required
+              className="form-control"
+              style={{ flex: 4 }}
+              value={ms(this.state.projectname)}
+              onChange={this.onChangeProjectname}
+            >
+              {this.state.projects.map(project => {
+                return (
+                  <option key={project} value={project}>
+                    {project}
+                  </option>
+                );
+              })}
+            </select>
             <input
               type="text"
               placeholder="00:00:00"
+              value={this.state.duration}
               className="form-control"
+              style={{ flex: 2 }}
             />
-            <button type="button" className="btn">
-              <FontAwesomeIcon icon={faPlayCircle} size="2x" />
-            </button>
+            <FontAwesomeIcon
+              className="playButton"
+              style={{ flex: 1 }}
+              icon={faPlayCircle}
+              size="2x"
+              onClick={this.startTimer}
+            />
           </div>
         </div>
       </form>

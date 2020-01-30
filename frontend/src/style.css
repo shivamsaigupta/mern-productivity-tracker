@@ -23,3 +23,8 @@
   background-color: rgba(0, 0, 0, 0.14);
   cursor: pointer;
 }
+
+.playButton {
+  padding: 2px;
+  margin: 2px;
+}

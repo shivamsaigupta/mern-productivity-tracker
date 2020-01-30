@@ -11,6 +11,7 @@
     "@testing-library/react": "^9.3.2",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "pretty-ms": "^5.1.0",
     "react": "^16.12.0",
     "react-datepicker": "^2.11.0",
     "react-dom": "^16.12.0",
