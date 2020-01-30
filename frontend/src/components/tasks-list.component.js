@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import TimerBar from "./timerbar.component";
 import Task from "./task.component";
 import axios from "axios";
 
@@ -45,6 +46,7 @@ class TasksList extends Component {
   render() {
     return (
       <div>
+        <TimerBar />
         <h3>Logged Tasks</h3>
         <table className="table">
           <thead className="thead-light">
