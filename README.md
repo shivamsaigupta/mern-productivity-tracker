@@ -1,10 +1,10 @@
 # Productivity Tracker App
+![preview](https://github.com/shivamsaigupta/mern-productivity-tracker/blob/master/preview.gif)
 Built using using the MERN (MongoDB, Express.js, React.js, Node.js) Stack.
 
 The web-app lets you track time spent doing productive tasks. You can't optimize what you don't measure. Hence, start by measuring your productivity to optimize it.
 
 Status: Work In Progress
-![preview](https://github.com/shivamsaigupta/mern-productivity-tracker/blob/master/preview.gif)
 
 ### How to Run
 
