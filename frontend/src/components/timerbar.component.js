@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import ms from "pretty-ms";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faBriefcase,
   faPlayCircle,
-  faStopCircle
+  faPauseCircle,
+  faChevronCircleRight,
+  faCheck
 } from "@fortawesome/free-solid-svg-icons";
 import "../style.css";
 import axios from "axios";
@@ -43,6 +44,35 @@ class TimerBar extends Component {
     document.removeEventListener("mousedown", this.handleClickOutside);
   }
 
+  onChangeProjectname = e => {
+    this.setState({
+      projectname: e.target.value
+    });
+  };
+
+  onChangeDescription = e => {
+    this.setState({
+      description: e.target.value
+    });
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+    const { projectname, description, duration, date } = this.state;
+    const newTask = {
+      projectname,
+      description,
+      duration,
+      date
+    };
+
+    axios.post("http://localhost:5000/tasks/add", newTask).then(res => {
+      this.props.rerenderCallback(newTask);
+      console.log(res);
+    });
+    this.resetTimer();
+  };
+
   startTimer = () => {
     this.setState({
       timerOn: true,
@@ -57,10 +87,10 @@ class TimerBar extends Component {
     );
   };
 
-  stopTimer() {
+  stopTimer = () => {
     this.setState({ timerOn: false });
     clearInterval(this.timer);
-  }
+  };
 
   resetTimer() {
     this.setState({ timerOn: false, duration: 0 });
@@ -74,6 +104,9 @@ class TimerBar extends Component {
             <input
               type="text"
               placeholder="What are you working on?"
+              value={this.state.description}
+              onChange={this.onChangeDescription}
+              required
               className="form-control"
             />
           </div>
@@ -83,7 +116,7 @@ class TimerBar extends Component {
               required
               className="form-control"
               style={{ flex: 4 }}
-              value={ms(this.state.projectname)}
+              value={this.state.projectname}
               onChange={this.onChangeProjectname}
             >
               {this.state.projects.map(project => {
@@ -97,17 +130,36 @@ class TimerBar extends Component {
             <input
               type="text"
               placeholder="00:00:00"
-              value={this.state.duration}
+              value={ms(this.state.duration, { colonNotation: true })}
               className="form-control"
               style={{ flex: 2 }}
             />
-            <FontAwesomeIcon
-              className="playButton"
-              style={{ flex: 1 }}
-              icon={faPlayCircle}
-              size="2x"
-              onClick={this.startTimer}
-            />
+            {this.state.timerOn ? (
+              <FontAwesomeIcon
+                className="btn-timer-ctrl"
+                style={{ flex: 1 }}
+                icon={faPauseCircle}
+                size="2x"
+                onClick={this.stopTimer}
+              />
+            ) : (
+              <FontAwesomeIcon
+                className="btn-timer-ctrl"
+                style={{ flex: 1 }}
+                icon={faPlayCircle}
+                size="2x"
+                onClick={this.startTimer}
+              />
+            )}
+            {this.state.duration > 0 ? (
+              <FontAwesomeIcon
+                className="checkButton"
+                style={{ flex: 1 }}
+                icon={faCheck}
+                onClick={this.onSubmit}
+                size="2x"
+              />
+            ) : null}
           </div>
         </div>
       </form>

@@ -43,10 +43,17 @@ class TasksList extends Component {
     });
   }
 
+  rerenderCallback = newTask => {
+    this.setState({
+      tasks: [...this.state.tasks, newTask]
+    });
+    //this.forceUpdate();
+  };
+
   render() {
     return (
       <div>
-        <TimerBar />
+        <TimerBar rerenderCallback={this.rerenderCallback.bind(this)} />
         <h3>Logged Tasks</h3>
         <table className="table">
           <thead className="thead-light">

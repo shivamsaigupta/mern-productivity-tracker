@@ -24,7 +24,21 @@
   cursor: pointer;
 }
 
-.playButton {
+.btn-timer-ctrl {
   padding: 2px;
+  opacity: 0.8;
   margin: 2px;
+  cursor: pointer;
+}
+
+.btn-timer-ctrl:hover {
+  opacity: 1;
+}
+
+.checkButton {
+  opacity: 0.8;
+}
+
+.checkButton:hover {
+  opacity: 1;
 }
