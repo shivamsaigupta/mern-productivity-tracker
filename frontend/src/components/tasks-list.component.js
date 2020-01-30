@@ -21,7 +21,7 @@ class TasksList extends Component {
       });
   }
 
-  deleteTask(id) {
+  deleteTask = id => {
     axios
       .delete("http://localhost:5000/tasks/" + id)
       .then(res => console.log(res.data));
@@ -29,7 +29,7 @@ class TasksList extends Component {
     this.setState({
       tasks: this.state.tasks.filter(el => el._id !== id)
     });
-  }
+  };
 
   taskList() {
     return this.state.tasks.map(currentTask => {
