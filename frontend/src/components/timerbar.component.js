@@ -67,7 +67,7 @@ class TimerBar extends Component {
     };
 
     axios.post("http://localhost:5000/tasks/add", newTask).then(res => {
-      this.props.rerenderCallback(newTask);
+      this.props.rerenderCallback();
       console.log(res);
     });
     this.resetTimer();

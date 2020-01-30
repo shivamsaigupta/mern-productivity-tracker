@@ -43,11 +43,15 @@ class TasksList extends Component {
     });
   }
 
-  rerenderCallback = newTask => {
-    this.setState({
-      tasks: [...this.state.tasks, newTask]
-    });
-    //this.forceUpdate();
+  rerenderCallback = () => {
+    axios
+      .get("http://localhost:5000/tasks/")
+      .then(res => {
+        this.setState({ tasks: res.data });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   render() {
