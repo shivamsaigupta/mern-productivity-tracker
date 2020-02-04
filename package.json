@@ -9,14 +9,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cd backend && npm install && node index.js",
-    "heroku-postbuild": "cd frontend && npm install && npm run build"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shivamsaigupta/mern-productivity-tracker.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Shivam Sai Gupta",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/shivamsaigupta/mern-productivity-tracker/issues"
