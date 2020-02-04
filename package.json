@@ -1,24 +1,6 @@
 {
-  "name": "mern-productivity-tracker",
-  "version": "1.0.0",
-  "description": "A Productivity Tracker built using using the MERN Stack.",
-  "main": "index.js",
-  "engines": {
-    "node": "8.12.0"
-  },
   "scripts": {
     "start": "npm install --prefix backend && node server.js --prefix backend",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/shivamsaigupta/mern-productivity-tracker.git"
-  },
-  "keywords": [],
-  "author": "Shivam Sai Gupta",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/shivamsaigupta/mern-productivity-tracker/issues"
-  },
-  "homepage": "https://github.com/shivamsaigupta/mern-productivity-tracker#readme"
+  }
 }
